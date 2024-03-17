@@ -22,8 +22,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/clientes", "/api/clientes/page/**", "/api/uploads/img/**","/images/**").permitAll()
-		.antMatchers("/api/clientes/{id}").permitAll()
-		.antMatchers("/api/facturas/**").permitAll()
 //		.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("BASIC", "ADMIN")
 //		.antMatchers(HttpMethod.POST, "/api/clientes/upload").hasAnyRole("BASIC", "ADMIN")
 //		.antMatchers(HttpMethod.POST, "/api/clientes").hasRole("ADMIN")
@@ -37,7 +35,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	    // Se crea una nueva configuración CORS
 	    CorsConfiguration configuration = new CorsConfiguration();	    
 	    // Se especifica el origen permitido, en este caso, solo se permite "http://localhost:4200"
-	    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+	    configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","*"));//Poner nombre servidor
 	    // Se especifican los métodos HTTP permitidos
 	    configuration.setAllowedMethods(Arrays.asList("GET","POST","DELETE","PUT","OPTIONS"));	    
 	    // Se permite enviar credenciales (como cookies) en la solicitud

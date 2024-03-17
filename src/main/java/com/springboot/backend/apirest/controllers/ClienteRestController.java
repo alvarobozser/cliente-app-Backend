@@ -39,7 +39,7 @@ import com.springboot.backend.apirest.models.entity.Region;
 import com.springboot.backend.apirest.models.services.ClienteService;
 import com.springboot.backend.apirest.models.services.UploadFileService;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins = { "http://localhost:4200","*" })
 @RestController
 @RequestMapping("/api")
 public class ClienteRestController {
@@ -63,7 +63,7 @@ public class ClienteRestController {
 		return clienteService.findAll(pageable);
 	}
 	
-	//@Secured({"ROLE_ADMIN","ROLE_USER"})
+	@Secured({"ROLE_ADMIN","ROLE_USER"})
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		
